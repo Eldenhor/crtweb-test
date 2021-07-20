@@ -24,6 +24,8 @@ class API {
 
       const apartmentsData: ApartmentsDataType = await response.json();
       console.log("apartments data", apartmentsData);
+      // dispatch error here
+
       this.dispatch(UpdateApartmentsData(apartmentsData));
 
     } catch (err) {

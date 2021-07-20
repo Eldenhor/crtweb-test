@@ -1,13 +1,9 @@
-import { createServer, Model } from "miragejs";
+import { createServer } from "miragejs";
 import Schema from "miragejs/orm/schema";
 import { seedApartmentsData } from "./mockData";
 
 export const mockServer = () => {
   createServer({
-
-    models: {
-      apartments: Model
-    },
 
     seeds(server) {
       server.db.loadData({
@@ -20,16 +16,28 @@ export const mockServer = () => {
       this.timing = 300;
 
       this.get("/get-apartments", (schema: Schema<any>) => {
-        return schema.db.apartments;
+        try {
+          return schema.db.apartments;
+        } catch (err) {
+          return {status: null};
+        }
       });
 
-      this.put("/update-apartment", async (schema, request) => {
-        const id = JSON.parse(request.requestBody).apartmentId;
-        const likeValue = JSON.parse(request.requestBody);
+      this.put("/update-apartment", (schema: Schema<any>, request) => {
+        try {
+          const id = JSON.parse(request.requestBody).apartmentId;
+          const likeValue = JSON.parse(request.requestBody).likeValue;
 
-        return await schema.db.apartments.update({id: id}, {liked: likeValue});
+          const apartment = schema.find("apartments", id);
+          apartment?.update({like: likeValue});
+          console.log("db state: ", schema.db.apartments)
+
+          return {status: apartment};
+        } catch (err) {
+          return {status: null};
+        }
       });
-    }
+    },
 
   });
 };

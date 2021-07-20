@@ -17,26 +17,25 @@ type ApartmentsCardType = {
   cardId: string
 }
 export const ApartmentsCard = ({apartmentCard, cardId}: ApartmentsCardType) => {
-  console.log(cardId)
   const dispatch = useAppDispatch();
 
   const likeHandle = () => {
-    dispatch(UpdateApartmentLike(apartmentCard.id, !apartmentCard.liked))
-    API.likeApartment(cardId, true)
+    dispatch(UpdateApartmentLike(apartmentCard.id, !apartmentCard.like))
+    API.likeApartment(cardId, !apartmentCard.like)
   }
 
   return (
     <StyledContainer>
       <StyledLikeStar>
         <button onClick={likeHandle}>
-          <Star liked={apartmentCard.liked}/>
+          <Star liked={apartmentCard.like}/>
         </button>
       </StyledLikeStar>
       <StyledTitle>
-        {apartmentCard.title}
+        {apartmentCard.attributes.title}
       </StyledTitle>
       <StyledDescription>
-        {apartmentCard.description}
+        {apartmentCard.relationships.attributes.first_name}
       </StyledDescription>
       <StyledImage src={apartmentCard.image}/>
     </StyledContainer>

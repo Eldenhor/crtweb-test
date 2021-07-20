@@ -14,7 +14,7 @@ export const apartmentsReducer = (state = initialState, action: ActionTypes) => 
         break;
 
       case type.UPDATE_APARTMENT_LIKE:
-        draft[action.apartmentId].liked = action.likedValue;
+        draft[action.apartmentId].like = action.likedValue;
         break;
 
       default:

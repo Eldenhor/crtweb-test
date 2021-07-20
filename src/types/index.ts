@@ -1,9 +1,29 @@
 export type ApartmentCardType = {
-  id: string
-  title: string
-  description: string
   image: string
-  liked: boolean
+  like: boolean
+  type: string
+  id: string
+  attributes: {
+    title: string
+    rooms: string
+    address: {
+      city: string
+      street: string
+      house: string
+      room: string
+    },
+    area: string
+    unit: string
+  },
+  relationships: {
+    type: string
+    id: string
+    attributes: {
+      first_name: string
+      last_name: string
+      middle_name: string
+    }
+  }
 }
 
 export type ApartmentsDataType = ApartmentCardType[]
