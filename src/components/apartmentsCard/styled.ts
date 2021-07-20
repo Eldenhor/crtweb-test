@@ -13,12 +13,20 @@ export const StyledLikeStar = styled.div({
   justifyContent: "flex-end",
   right: 0
 });
+export const StyledStarButton = styled.button({
+  backgroundColor: "transparent"
+})
 export const StyledTitle = styled.h1(props => ({
-  ...props.theme.typography.f_roboto_22_26_400
+  ...props.theme.typography.f_roboto_22_26_400,
+  textAlign: "center",
+  marginTop: "0.6rem",
+  height: "5rem"
 }));
 export const StyledDescription = styled.p(props => ({
   ...props.theme.typography.f_roboto_16_18_400,
-  color: props.theme.colors.color_darkgray
+  color: props.theme.colors.color_darkgray,
+  marginTop: "1.4rem",
+  marginBottom: "1.4rem"
 }));
 export const StyledImage = styled.img({
   width: "24rem",

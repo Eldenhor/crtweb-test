@@ -4,7 +4,8 @@ import {
   StyledTitle,
   StyledDescription,
   StyledImage,
-  StyledLikeStar
+  StyledLikeStar,
+  StyledStarButton
 } from "./styled";
 import { ApartmentCardType } from "../../types";
 import { Star } from "../star";
@@ -27,9 +28,9 @@ export const ApartmentsCard = ({apartmentCard, cardId}: ApartmentsCardType) => {
   return (
     <StyledContainer>
       <StyledLikeStar>
-        <button onClick={likeHandle}>
+        <StyledStarButton onClick={likeHandle}>
           <Star liked={apartmentCard.like}/>
-        </button>
+        </StyledStarButton>
       </StyledLikeStar>
       <StyledTitle>
         {apartmentCard.attributes.title}
